@@ -1,0 +1,24 @@
+{% extends 'authenticate/base.html' %}
+
+{% block content %}
+<title>Vitae - Login</title>
+
+<h2 class="text-center"> Login Page</h2>
+<div class = "col-md-6 offset-md-3">
+    <form method ="POST">
+        {% csrf_token %}
+        <div class="form-group">
+        <label for="UserName" class="form-label">Enter Username</label>
+        <input type="text" class="form-control" placeholder="Enter Username" name="username">
+        </div>
+
+        <div class="mt-3 mb-3">
+        <label for="Password" class="form-label">Enter Password</label>
+        <input type="password" class="form-control" placeholder = "Enter Password" name="password">
+        </div>
+        
+        <button type="submit" class="btn btn-secondary">Login</button>
+    </form>
+</div class>
+    
+{% endblock %}

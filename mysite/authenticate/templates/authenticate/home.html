@@ -1,0 +1,53 @@
+{% extends 'authenticate/base.html' %}
+
+{% block content %}
+<div class="container border border-primary id=maincontainer">
+    <h1> Welcome to Vitae</h1>
+    <p>
+        Vitae is a web application that allows you to create and manage your Cover Letter.
+    </p>
+
+    <div class="d-flex ">
+        <div class="p-2 flex-fill border border-secondary m-3"><h3>Templates</h3></div>
+        <div class="p-2 flex-fill border border-secondary m-3"><h3>Flex item</h3></div>
+        
+      </div>
+
+      <div class="d-flex">
+        <div class="p-2 w-100 border border-secondary m-3">Flex item</div>
+        <div class="p-2 w-30 border border-secondary m-3">Flex item 2222222222222</div>
+       
+      </div>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--{% if user.is_authenticated %}
+<p>Name: {{ user.first_name }} {{ user.last_name}}</p>
+<p>Username: {{ user.username}}</p>
+<p>eMail: {{ user.email}}</p>
+
+{% endif %}-->
+    
+{% endblock %}

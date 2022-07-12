@@ -1,0 +1,100 @@
+#container {
+    display: flex;
+    border: 2px solid black;
+    height: auto;
+}
+
+#container1 {
+    width: 75%;
+    height: 980px;
+}
+
+#container2 {
+    width: 25%;
+    height: 900px;
+}
+
+#templatesearchheading {
+    text-align: center;
+}
+
+#templates {
+    display: flex;
+    height: 20%;
+    margin-bottom: 8px;
+    padding-left: 5px;
+    padding-bottom: 5px;
+    overflow: hidden;
+    overflow-x: scroll;
+    overflow-y: scroll;
+}
+
+h3 {
+    color: grey;
+}
+
+#letterbodyheading {
+    text-align: center;
+}
+
+#letterbody {
+    height: 620px;
+    margin: 3px;
+    padding-left: 30%;
+    padding-right: 30%;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+#inputfieldsheading {
+    text-align: center;
+}
+
+#inputfields {
+    height: 20%;
+    overflow: hidden;
+    overflow-y: scroll;
+    margin: 5px;
+    padding: 3px;
+}
+
+#blankfieldsheading {
+    text-align: center;
+}
+
+#blankfields {
+    height: 30%;
+    margin: 3px;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+#precompletedfieldsheading {
+    text-align: center;
+}
+
+#precompletedfields {
+    height: 50%;
+    margin: 3px;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.draggable {
+    display: flex;
+    height: auto;
+    cursor: move;
+    border: 1px solid #333;
+    margin: 6px;
+    padding: 6px;
+    overflow: hidden;
+    overflow-y: scroll;
+    box-shadow: -3px 4px 4px rgba(0, 0, 0, 0.37);
+}
+
+.draggable.dragging {
+    opacity: .5;
+    overflow: hidden;
+    overflow-y: scroll;
+    box-shadow: -3px 4px 4px rgba(255, 0, 0, 0.37);
+}
