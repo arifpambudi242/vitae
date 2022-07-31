@@ -1,56 +1,19 @@
 {% extends 'authenticate/base.html' %}
-
-
 {% block content %}
-<div class="container border border-primary id=maincontainer ">
-    <h1 class="text-center"> Welcome to Vitae</h1>
-    <p class="text-center">
-        Vitae is a web application that allows you to create and manage your Cover Letter.
-    </p>
+<div class="main-container d-flex">
+  <!--<div class="sidebar" id="sidebar">
+    <div class="header-box">
+      <h1 class="fs-4"><span class="bg-white text-dark rounded shadow px-2 m">CL</span>Coding League</h1>
+    </div>
 
-    <div class="containermain">
-      <div class="container">
-        <div class="row">
-          <div class="col-8">
-            One of three columns
-          </div>
-          <div class="col-sm">
-            One of three columns
-          </div>
-      </div>
-        
-      </div>
+  </div>-->
+  <div class="content">
+    {% if user.is_authenticated %}
+    <p>Name: {{ user.first_name }} {{ user.last_name}}</p>
+    <p>Username: {{ user.username}}</p>
+    <p>eMail: {{ user.email}}</p>
+
+    {% endif %}
   </div>
-
-
-
-
-
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--{% if user.is_authenticated %}
-<p>Name: {{ user.first_name }} {{ user.last_name}}</p>
-<p>Username: {{ user.username}}</p>
-<p>eMail: {{ user.email}}</p>
-
-{% endif %}-->
-    
-{% endblock %}
+{% endblock content %}

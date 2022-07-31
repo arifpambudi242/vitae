@@ -1,0 +1,23 @@
+Include the following fields in user table
+
+First Name
+Surname
+Address1
+Address2
+Suburb
+Postcode
+State
+Country
+
+
+
+Create new table called "responses" and include the following:
+
+Userid
+Name
+Body/content
+Category
+Tag(s)
+
+
+Add css and javascript links

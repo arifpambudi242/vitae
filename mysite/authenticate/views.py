@@ -3,6 +3,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 
+from .forms import UserForm
+
 def home(request):
     return render(request, 'authenticate/home.html')
 
@@ -22,10 +24,12 @@ def login_user(request):
     else:
         return render(request, 'authenticate/login.html',{})
 
+
 def logout_user(request):
     logout(request)
     messages.success(request, 'You are now logged out')
     return redirect('home')
+
 
 def register_user(request):
     if request.method == 'POST':
@@ -44,3 +48,18 @@ def register_user(request):
     context = {'form': form}
     return render(request, 'authenticate/register.html', context)
 
+
+def user_profile(request):
+    if request.method == 'POST':
+        form = UserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            address_1 = form.cleaned_data['address_1']
+            address_2 = form.cleaned_data['address_2']
+
+            user = request.user
+            user.address_1 = address_1
+            user.address_2 = address_2
+
+            user.save()
+    return render(request, 'authenticate/profile.html')
