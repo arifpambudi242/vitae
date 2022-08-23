@@ -65,3 +65,4 @@ def user_profile(request):
 
             user.save()
     return render(request, 'authenticate/profile.html')
+

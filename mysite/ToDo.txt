@@ -1,2 +1,10 @@
 13/7/22 - Need to sort Margins in the Home.html file
 14/7/22 - No change - need to work out how to link to CSS
+23/8/22 - The following "helicopter" items need to be added or fixed
+        + Add the ability to update profile
+        + Add the ability to create and update/save "Responses"
+        + Add ability to move items around in Letter Body
+        + Add Payment method (Tester=Free, Standard = $15 per month)
+        + Get new UI design
+        + Add templates
+        
