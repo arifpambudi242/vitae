@@ -1,19 +1,9 @@
-{% load static %}
 {% extends 'authenticate/base.html' %}
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'authenticate/style.css' %}">
+{% endblock css %}
 {% block content %}
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name=" viewport " content="width=device-width, initial-scale=1.0 ">
-    <title>EZ-Cover Letter Wizard</title>
-    
-    <link rel="stylesheet" type="text/css" href="{% static 'authenticate/style.css' %}";>
-</head>
-
-<body>
     <div id="container">
         <div id="container1">
             <div id="templatesearchheading">
@@ -46,12 +36,13 @@
             <div id="letterbodyheading">
                 <h2>Letter Body</h2>
                 <div id="letterbody">
-                    <button onclick="Export2Doc('letterbody','test');">Export to MS Word</button>
-                </div>
-                <h3> Drag and drop template and Paragraphs here </h3>
+                  <button onclick="Export2Doc('letterbody','test');">Export to MS Word</button>
+                  <h3> Drag and drop template and Paragraphs here </h3>
+              </div>
+
             </div>
 
-            
+
         </div>
         <!-- Container1-->
 
@@ -90,7 +81,7 @@
         <!--Container2-->
     </div>
     <!--Container-->
+{% endblock content %}
+{% block js %}
     <script defer src="{% static 'authenticate/app.js' %}"></script>
-</body>
-
-</html>
+{% endblock js %}

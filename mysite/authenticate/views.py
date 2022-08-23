@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 
-from .forms import UserForm
+from .forms import UserForm, CustomUserCreationForm
+
 
 def home(request):
     return render(request, 'authenticate/home.html')
@@ -33,7 +33,8 @@ def logout_user(request):
 
 def register_user(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        # Now we use our CustomUserCreationForm to register a new user.
+        form = CustomUserCreationForm(request.POST)  # UserCreationForm(request.POST)
         if form.is_valid():
             form.save()
             username = form.cleaned_data['username']
@@ -41,10 +42,11 @@ def register_user(request):
             user = authenticate(request, username=username, password=password)
             
             messages.success(request, 'You are now registered and logged in')
-            #login(request, user)
+            # Once registered, the user is logged in automatically.
+            login(request, user)
             return redirect('home')
     else:
-        form = UserCreationForm()
+        form = CustomUserCreationForm()  # UserCreationForm()
     context = {'form': form}
     return render(request, 'authenticate/register.html', context)
 
@@ -56,7 +58,7 @@ def user_profile(request):
             form.save()
             address_1 = form.cleaned_data['address_1']
             address_2 = form.cleaned_data['address_2']
-
+            
             user = request.user
             user.address_1 = address_1
             user.address_2 = address_2

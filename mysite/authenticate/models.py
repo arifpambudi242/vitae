@@ -4,7 +4,7 @@ from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
 # The table that would be created -> AppName_ModelName: authenticate_system_user
-#class SystemUser(models.Model):
+# class SystemUser(models.Model):
 #    user = models.OneToOneField('auth.User', on_delete=models.CASCADE)
 #    address_1 = models.CharField(max_length=256, blank=True)
 #    address_2 = models.CharField(max_length=256, blank=True)
@@ -21,7 +21,7 @@ from django.contrib.auth.models import AbstractUser
 #        verbose_name = 'System User'
 #        verbose_name_plural = 'System Users'
 
-categories = (("Computer", "Computer"), ("Litature", "Litature"), ("Science", "Science"), ("Math", "Math"), ("History", "History"), ("Geography", "Geography"), ("Art", "Art"), ("Music", "Music"), ("Sport", "Sport"), ("Other", "Other"))
+categories = (("Accounting", "Accounting"), ("Administration", "Administration"), ("Advert/Media/Entert", "Advert/Media/Entert"), ("Banking and Financial Services", "Banking and Financial Services"), ("Call Centre / Customer Service", "Call Centre / Customer Service"), ("Community & Sport", "Community & Sport"), ("Construction", "Construction"), ("Consulting & Corporate Strategy", "Consulting & Corporate Strategy"), ("Education & Training", "Education & Training"), ("Engineering", "Engineering"),("Government/Defence", "Government/Defence"), ("Healthcare & Medical", "Healthcare & Medical"), ("Hospitality & Tourism", "Hospitality & Tourism"), ("HR & Recruitment", "HR & Recruitment"), ("Insurance & Superannuation", "Insurance & Superannuation"), ("I.T", "I.T"), ("Legal", "Legal"), ("Manufacturing/Operations", "Manufacturing/Operations"), ("Mining, Oil & Gas", "Mining, Oil & Gas"), ("Primary Industry", "Primary Industry"), ("Real Estate and Property", "Real Estate and Property"), ("Retail/Consumer Prods.", "Retail/Consumer Prods."), ("Sales & Marketing", "Sales & Marketing"), ("Science and Technology", "Science and Technology"), ("Self-Employment", "Self-Employment"), ("Trades & Services", "Trades & Services"), ("Transport/Logistics", "Transport/Logistics"), ("Other", "Other"))
 
 
 class User(AbstractUser):
