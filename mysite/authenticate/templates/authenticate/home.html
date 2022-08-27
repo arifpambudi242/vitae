@@ -105,25 +105,12 @@ from .models import Response
                         <div class="draggable-item-container" style="display: flex; flex-direction: column" ondrop="drop(event)"
                              ondragover="allowDrop(event)">
 
-                             {% for item in contents %}
-                            <p id="p5" class="draggable" draggable="true" ondragstart="drag(event)">
-                            <strong>{{ item.title }}</strong><br>
-                            {{ item.content }}
-                            </p>
+                            {% for item in contents %}
+                                <p id="p5" class="draggable" draggable="true" ondragstart="drag(event)">
+                                    <strong>{{ item.title }}</strong><br>
+                                    {{ item.content }}
+                                </p>
                             {% endfor %}
-
-
-
-                            <p id="p5" class="draggable" draggable="true" ondragstart="drag(event)">
-                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit consequuntur quam
-                                quibusdam explicabo iure. Consequatur, cupiditate ratione, delectus, provident omnis id
-                                minima esse numquam nam similique sed incidunt amet pariatur.
-                            </p>
-                            <p id="p6" class="draggable" draggable="true" ondragstart="drag(event)">
-                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit consequuntur quam
-                                quibusdam explicabo iure. Consequatur, cupiditate ratione, delectus, provident omnis id
-                                minima esse numquam nam similique sed incidunt amet pariatur.
-                            </p>
                         </div>
                     </div>
                 </div>

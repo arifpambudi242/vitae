@@ -3,10 +3,16 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 
 from .forms import UserForm, CustomUserCreationForm
+from .models import Response
 
 
 def home(request):
-    return render(request, 'authenticate/home.html')
+    contents = None
+    if request.user.is_authenticated:
+        contents = Response.objects.filter(user=request.user)
+    return render(request, 'authenticate/home.html', context = {
+        'contents': contents
+        })
 
 
 def login_user(request):
@@ -65,4 +71,3 @@ def user_profile(request):
 
             user.save()
     return render(request, 'authenticate/profile.html')
-
