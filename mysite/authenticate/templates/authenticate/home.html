@@ -1,81 +1,97 @@
-from .models import Response
 {% extends 'authenticate/base.html' %}
 {% load static %}
 {% block css %}
-    <link rel="stylesheet" type="text/css" href="{% static 'authenticate/style.css' %}">
-    <style>
-        .draggable-item-container {
-            min-height: 100px;
-            border: 1px solid black;
-            margin-bottom: 10px;
-        }
+<link rel="stylesheet" type="text/css" href="{% static 'authenticate/style.css' %}">
+<style>
+    .draggable-item-container {
+        min-height: 100px;
+        border: 1px solid black;
+        margin-bottom: 10px;
+    }
 
-        .draggable {
-            margin: 10px;
-        }
+    .draggable {
+        margin: 10px;
+    }
 
-        #letterbody {
-            width: 100%;
-        }
-    </style>
+</style>
 {% endblock css %}
 {% block content %}
-    <h1>Templates - Vitae</h1>
-    <div class="row">
-        <div class="col-sm-9">
-            <div class="container-fluid">
-                <h2>Search Templates</h2>
-                <div class="row">
-                    <div class="col">
-                        <div class="draggable-item-container" style="display: flex" ondrop="drop(event)"
-                             ondragover="allowDrop(event)">
-                            <p id="p1" class="draggable" draggable="true" ondragstart="drag(event)">
-                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit consequuntur quam
-                                quibusdam explicabo iure. Consequatur, cupiditate ratione, delectus, provident omnis id
-                                minima esse numquam nam similique sed incidunt amet pariatur.
-                            </p>
-                            <p id="p2" class="draggable" draggable="true" ondragstart="drag(event)">
-                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit consequuntur quam
-                                quibusdam explicabo iure. Consequatur, cupiditate ratione, delectus, provident omnis id
-                                minima esse numquam nam similique sed incidunt amet pariatur.
-                            </p>
-                            <p id="p3" class="draggable" draggable="true" ondragstart="drag(event)">
-                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit consequuntur quam
-                                quibusdam explicabo iure. Consequatur, cupiditate ratione, delectus, provident omnis id
-                                minima esse numquam nam similique sed incidunt amet pariatur.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="container-fluid h-100">
-                <div style="display: flex">
-                    
-                    <h2><center> Letter Body</center></h2><br>
-                    <button onclick="Export2Doc('letterbody','test');">Export to MS Word</button>
-                   
-                </div>
-                <h5> <center>Drag and drop template and Paragraphs below:</center></h5>
-                    
-                <div class="row h-100">
-                    <div class="col h-100">
-                        <div id="letterbody" class="draggable-item-container h-100" ondrop="drop(event)"
-                             ondragover="allowDrop(event)">
-                        </div>
+<h1 class="ml-5 pl-5">Vitae</h1>
+<div class="row">
+    <div class="col-sm-9">
+        <div class="container-fluid">
+            <h3 class="text-center">Search Templates</h3>
+            <div class="row">
+                <div class="col">
+                    <div class="draggable-item-container" style="display: flex" ondrop="drop(event)"
+                        ondragover="allowDrop(event)">
+                        <p id="p1" class="draggable" draggable="false" ondragstart="drag(event)">
+                            COMING SOON
+                        </p>
+                        <p id="p2" class="draggable" draggable="false" ondragstart="drag(event)">
+                            COMING SOON
+                        </p>
+                        <p id="p3" class="draggable" draggable="false" ondragstart="drag(event)">
+                            COMING SOON
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-sm-3">
-            <div class="container-fluid">
-                <h1>Input Fields</h1>
-                <div class="row">
-                    <div class="col">
-                        <div class="draggable-item-container"  ondrop="drop(event)"
-                             ondragover="allowDrop(event)">
-                            
-                                {% if user.is_authenticated %}
-                                <p class="draggable" draggable="true" ondragstart="drag(event)">Name: {{ user.first_name }} {{ user.last_name}}</p>
+        <div class="container-fluid h-100">
+            <div class="flex text-center">
+                <h3 class="text-center">Letter Body</h3>
+                <button onclick="Export2Doc('letterbody','Cover Letter');">Export to MS Word</button>
+            </div>
+
+            <h5>
+                <center>Drag and drop template and Paragraphs below:</center>
+            </h5>
+
+            <div class="row h-100">
+                <div class="col h-100">
+                    <div id="letterbody" class="draggable-item-container h-100" ondrop="drop(event)"
+                        ondragover="allowDrop(event)">
+                        <div>
+                            {% if user.is_authenticated %}
+
+                            {{ user.first_name }} {{ user.last_name}}</br>
+                            {{ user.address_1}}</br>
+                            {{ user.address_2}}
+                            {{ user.suburb}}, {{ user.state}}, {{ user.country}}</br>
+                            Phone: {{ user.phone}}</br>
+                            eMail: {{ user.email}}</p>
+                            </p>
+
+                            Dear Recriter{{recruiter_name}},
+                            {% endif %}
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="container-fluid">
+            <h3 class="text-center">Input Fields</h3>
+            <div class="row">
+                <div class="col">
+                    <div class="draggable-item-container" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+                        <form action="/home.html" class="text-center" method="GET">
+                            <label>Role Title</label></br>
+                            <input type="text" name="role_title"></br>
+
+                            <label> Recruiter Name</label>
+                            <input type="text" name="recruiter_name" value="Recruiter"></br>
+
+                            <button class="mt-3">Submit</button>
+                        </form>
+
+
+
+                        <!--<p class="draggable" draggable="true" ondragstart="drag(event)">Name: {{ user.first_name }} {{ user.last_name}}</p>
                                 
                                 <p class="draggable" draggable="true" ondragstart="drag(event)">Address 1: {{ user.address_1}}</p>
 
@@ -89,50 +105,67 @@ from .models import Response
 
                                 <p class="draggable" draggable="true" ondragstart="drag(event)">Country: {{ user.country}}</p>
 
-                                <p class="draggable" draggable="true" ondragstart="drag(event)">eMail: {{ user.email}}</p>
+                                <p class="draggable" draggable="true" ondragstart="drag(event)">eMail: {{ user.email}}</p>-->
 
 
-                                {% endif %}
-                            </p>
-                        </div>
+
+                        </p>
                     </div>
                 </div>
             </div>
-            <div class="container-fluid">
-                <h1>Pre Completed Fields</h1>
-                <div class="row">
-                    <div class="col">
-                        <div class="draggable-item-container" style="display: flex; flex-direction: column" ondrop="drop(event)"
-                             ondragover="allowDrop(event)">
+        </div>
+        <div class="container-fluid">
+            <h3 class="text-center">My Fields</h2>
+            <div class="row">
+                <div class="col">
+                    <div class="draggable-item-container" style="display: flex; flex-direction: column"
+                        ondrop="drop(event)" ondragover="allowDrop(event)">
 
-                            {% for item in contents %}
-                                <p id="p5" class="draggable" draggable="true" ondragstart="drag(event)">
-                                    <strong>{{ item.title }}</strong><br>
-                                    {{ item.content }}
-                                </p>
-                            {% endfor %}
-                        </div>
+                        {% for item in contents %}
+                        <p id="p5" class="draggable" draggable="true" ondragstart="drag(event)">
+                            <!--<strong>{{ item.title }}</strong><br>-->
+                            {{ item.content }}
+                        </p>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <h3 class="text-center">Pre Completed Fields</h2>
+            <div class="row">
+                <div class="col">
+                    <div class="draggable-item-container" style="display: flex; flex-direction: column"
+                        ondrop="drop(event)" ondragover="allowDrop(event)">
+
+                        {% for item in contents %}
+                        <p id="p5" class="draggable" draggable="true" ondragstart="drag(event)">
+                            <!--<strong>{{ item.title }}</strong><br>-->
+                            {{ item.content }}
+                        </p>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 {% endblock content %}
 {% block js %}
-    <script defer src="{% static 'authenticate/app.js' %}"></script>
-    <script>
-        const allowDrop = (event) => {
-            event.preventDefault();
-        }
+<script defer src="{% static 'authenticate/app.js' %}"></script>
+<script>
+    const allowDrop = (event) => {
+        event.preventDefault();
+    }
 
-        const drag = (event) => {
-            event.dataTransfer.setData("text", event.target.id);
-        }
+    const drag = (event) => {
+        event.dataTransfer.setData("text", event.target.id);
+    }
 
-        const drop = (event) => {
-            event.preventDefault();
-            const data = event.dataTransfer.getData("text");
-            event.target.appendChild(document.getElementById(data));
-        }
-    </script>
+    const drop = (event) => {
+        event.preventDefault();
+        const data = event.dataTransfer.getData("text");
+        event.target.appendChild(document.getElementById(data));
+    }
+</script>
 {% endblock js %}

@@ -16,7 +16,7 @@ from django.contrib.auth.models import AbstractUser
 
 #    def __str__(self):
 #        return self.user.username
-    
+
 #    class Meta:
 #        verbose_name = 'System User'
 #        verbose_name_plural = 'System Users'
@@ -54,3 +54,10 @@ class Response(models.Model):
     class Meta:
         verbose_name = 'Response'
         verbose_name_plural = 'Responses'
+
+
+class EmailVerification(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    uid = models.CharField(max_length=100, blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)

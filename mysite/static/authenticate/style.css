@@ -37,11 +37,11 @@ h3 {
     text-align: center;
 }
 
+
 #letterbody {
     height: 620px;
     margin: 3px;
-    padding-left: 30%;
-    padding-right: 30%;
+    padding-left: 5%;
     overflow: hidden;
     overflow-y: scroll;
 }

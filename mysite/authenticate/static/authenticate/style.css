@@ -22,15 +22,15 @@
     display: flex;
     height: 20%;
     margin-bottom: 8px;
-    padding-left: 5px;
-    padding-bottom: 5px;
-    overflow: hidden;
+    padding-left: 150px;
+    padding-bottom: 10px;
+    /*overflow: hidden;
     overflow-x: scroll;
-    overflow-y: scroll;
+    overflow-y: scroll;*/
 }
 
 h3 {
-    color: grey;
+    color: black;
 }
 
 #letterbodyheading {
@@ -40,10 +40,10 @@ h3 {
 #letterbody {
     height: 620px;
     margin: 3px;
-    padding-left: 30%;
-    padding-right: 30%;
-    overflow: hidden;
-    overflow-y: scroll;
+    padding-left: 7pt;
+    padding-right: 10%;
+    /*overflow: hidden;
+    overflow-y: scroll;*/
 }
 
 #inputfieldsheading {

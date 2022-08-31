@@ -8,9 +8,9 @@
 
   </div>-->
   <div class="content">
-    <h1> Profile Page</h1>
+    <h1 class ="text-center"> Profile Page</h1>
     {% if user.is_authenticated %}
-    <p>Name: {{ user.first_name }} {{ user.last_name}}</p>
+    <!--<p>Name: {{ user.first_name }} {{ user.last_name}}</p>
     <p>Username: {{ user.username }}</p>
     <p>Address 1: {{ user.address_1}}</p>
     <p>Address 2: {{ user.address_2}}</p>
@@ -18,55 +18,66 @@
     <p>State: {{ user.state}}</p>
     <p>Postcode: {{ user.postcode}}</p>
     <p>Phone: {{ user.phone}}</p>
-    <p>eMail: {{ user.email }}</p>
+    <p>eMail: {{ user.email }}</p>-->
     <div class = "col-md-6 offset-md-3">
       <form method ="POST">
           {% csrf_token %}
-          <div class="form-group">
+          <!-- <div class="form-group">
           <label for="UserName" class="form-label">Enter Username</label>
           <input type="memo" class="form-control" placeholder={{ user.username }} name="username">
           </div>
-  
+
           <div class="mt-3 mb-3">
           <label for="Password" class="form-label">Enter Password</label>
           <input type="password" class="form-control" placeholder = "Enter Password" name="password">
+          </div> -->
+          <div class="mt-3 mb-3">
+            <label for="Address1" class="form-label">First Name</label>
+            <input type="text" class="form-control" value="{{ user.first_name }}" name="first_name">
           </div>
-
+          <div class="mt-3 mb-3">
+            <label for="Address1" class="form-label">Surname</label>
+            <input type="text" class="form-control" value="{{ user.last_name }}" name="last_name">
+          </div>
           <div class="mt-3 mb-3">
             <label for="Address1" class="form-label">Address 1</label>
-            <input type="text" class="form-control" placeholder={{ user.address_1 }} name="address1">
+            <input type="text" class="form-control" value="{{ user.address_1 }}" name="address_1">
           </div>
 
           <div class="mt-3 mb-3">
             <label for="Address2" class="form-label">Address 2</label>
-            <input type="text" class="form-control" placeholder={{ user.address_2 }} name="address1">
+            <input type="text" class="form-control" value="{{ user.address_2 }}" name="address_2">
           </div>
 
           <div class="mt-3 mb-3">
             <label for="Suburb" class="form-label">City</label>
-            <input type="text" class="form-control" placeholder={{ user.suburb }} name="suburb">
+            <input type="text" class="form-control" value="{{ user.suburb }}" name="suburb">
           </div>
 
           <div class="mt-3 mb-3">
             <label for="State" class="form-label">State</label>
-            <input type="text" class="form-control" placeholder={{ user.state }} name="state">
+            <input type="text" class="form-control" value="{{ user.state }}" name="state">
+          </div>
+          <div class="mt-3 mb-3">
+            <label for="postcode" class="form-label">Post Code</label>
+            <input type="text" class="form-control" value="{{ user.postcode }}" name="postcode">
           </div>
 
           <div class="mt-3 mb-3">
             <label for="Country" class="form-label">Country</label>
-            <input type="text" class="form-control" placeholder={{ user.country }} name="country">
+            <input type="text" class="form-control" value="{{ user.country }}" name="country">
           </div>
 
           <div class="mt-3 mb-3">
             <label for="Phone" class="form-label">Phone</label>
-            <input type="text" class="form-control" placeholder={{ user.phone }} name="phone">
+            <input type="text" class="form-control" value="{{ user.phone }}" name="phone">
           </div>
 
           <div class="mt-3 mb-3">
             <label for="eMail" class="form-label">eMail</label>
-            <input type="text" class="form-control" placeholder={{ user.email }} name="email">
+            <input type="text" class="form-control" value="{{ user.email }}" name="email">
           </div>
-          
+
           <button type="submit" class="btn btn-secondary">Update</button>
       </form>
   </div class>
