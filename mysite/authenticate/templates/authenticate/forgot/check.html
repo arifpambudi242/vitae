@@ -1,0 +1,34 @@
+{% extends 'authenticate/base.html' %}
+
+{% block content %}
+<title>Vitae - Forgot password</title>
+
+<h2 class="text-center"> Forgot password</h2>
+<div class = "col-md-6 offset-md-3">
+  {% if status == 0 %}
+    <form method ="POST">
+        {% csrf_token %}
+        <div class="form-group mt-3 mb-3">
+          {% if errors %}
+          <div class="alert alert-danger" role="alert">{{ errors }}</div>
+          {% endif %}
+        <label for="Email" class="form-label">Enter your email</label>
+        <input type="email" class="form-control" placeholder="Email..." name="email">
+        </div>
+        <button type="submit" class="btn btn-secondary">Check</button>
+    </form>
+    {% endif %}
+
+    {% if status == 1 %}
+    <div class="alert alert-danger" role="alert">
+      The email you provided doesn't exist retype it again   <a href="{% url 'forgot-check' %}">here</a>
+    </div>
+  {% endif %}
+    {% if status == 2 %}
+    <div class="alert alert-success" role="alert">
+  A confirmation email sent to your address email. check it out
+    </div>
+      {% endif %}
+</div class>
+
+{% endblock %}

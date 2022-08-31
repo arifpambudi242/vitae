@@ -1,0 +1,14 @@
+Vitae App TODO list
+
+1) Change callback screen to Profile after registration - AB
+2) Add exisiting data to fields in Profile Page
+3) Add ability for user to create their own Responses in site
+4) List generic responses for all users
+5) Forgot Password function
+6) Add "Save" capability to Profile Page
+7) Make Login page modal and pop up on site entry
+8) Change Database
+9) Add "Templates" designs
+10) Change UI Design
+11) Call out for testers 
+12) Add Payment services - Strip/SecurePay etc
