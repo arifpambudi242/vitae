@@ -40,8 +40,8 @@ h3 {
 #letterbody {
     height: 620px;
     margin: 3px;
-    padding-left: 7pt;
-    padding-right: 10%;
+    padding-left: 25px;
+    padding-right: 25px;
     /*overflow: hidden;
     overflow-y: scroll;*/
 }

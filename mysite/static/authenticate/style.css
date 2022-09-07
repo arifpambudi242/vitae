@@ -22,28 +22,28 @@
     display: flex;
     height: 20%;
     margin-bottom: 8px;
-    padding-left: 5px;
-    padding-bottom: 5px;
-    overflow: hidden;
+    padding-left: 150px;
+    padding-bottom: 10px;
+    /*overflow: hidden;
     overflow-x: scroll;
-    overflow-y: scroll;
+    overflow-y: scroll;*/
 }
 
 h3 {
-    color: grey;
+    color: black;
 }
 
 #letterbodyheading {
     text-align: center;
 }
 
-
 #letterbody {
     height: 620px;
     margin: 3px;
-    padding-left: 5%;
-    overflow: hidden;
-    overflow-y: scroll;
+    padding-left: 25px;
+    padding-right: 25px;
+    /*overflow: hidden;
+    overflow-y: scroll;*/
 }
 
 #inputfieldsheading {
