@@ -1,8 +1,10 @@
+from turtle import title
+from unicodedata import category
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .forms import UserForm, CustomUserCreationForm
-from .models import Response, EmailVerification, User
+from .models import Response, EmailVerification, User, categories
 from random import randint
 from django.core import mail
 from django.template.loader import render_to_string
@@ -28,6 +30,8 @@ def login_user(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
+            # save user to session
+            request.session['user'] = username
             messages.success(request, 'You are now logged in')
             return redirect('home')
         else:
@@ -46,7 +50,28 @@ def about(request):
     return render(request, 'authenticate/about.html', {})
 
 def response(request):
-    return render(request, 'authenticate/response.html', {})
+    if request.method == 'POST':
+        if request.POST['content'] != '':
+            response = Response(\
+                content=request.POST['content'],\
+                user=request.user,\
+                title=request.POST['title'],\
+                category=request.POST['category'],\
+                tags=request.POST['tags'])
+            response.save()
+            messages.success(request, extra_tags='alert alert-success', message='Your response has been saved')
+            return redirect('response')
+        else:
+            messages.error(request, 'Content field is empty')
+            return redirect('response')
+    response = {
+        'response': 
+        {
+            'user' : request.session['user'],
+            'categories': categories,
+        }
+    }
+    return render(request, 'authenticate/response.html', context=response)
 
 
 def register_user(request):
