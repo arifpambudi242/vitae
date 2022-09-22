@@ -1,0 +1,17 @@
+.contact{
+    background-color: #a00a0a;
+    padding: 25px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    border: 1px solid rgb(3, 28, 92);
+
+}
+.surname{
+    background-color: #102fc9;
+    padding: 25px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    border: 1px solid rgb(3, 28, 92);
+}

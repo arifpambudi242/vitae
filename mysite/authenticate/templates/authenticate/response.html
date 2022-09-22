@@ -1,0 +1,52 @@
+{% extends 'authenticate/base.html' %}
+{% block content %}
+<div class="main-container d-flex">
+  <!--<div class="sidebar" id="sidebar">
+    <div class="header-box">
+      <h1 class="fs-4"><span class="bg-white text-dark rounded shadow px-2 m">CL</span>Coding League</h1>
+    </div>
+
+  </div>-->
+  <div class="content">
+    <h1 class ="text-center"> Add Response</h1>
+    {% if user.is_authenticated %}
+    
+    <div class = "col-md-6 offset-md-3">
+      <form method ="POST">
+          {% csrf_token %}
+          
+          <div class="mt-3 mb-3">
+            <label for="User" class="form-label">User</label>
+            <input type="text" class="form-control" value="{{ response.user }}" name="user">
+          </div>
+
+          
+          <div class="mt-3 mb-3">
+            <label for="Title" class="form-label">Response Title</label>
+            <input type="text" class="form-control" value="{{ response.title }}" name="title">
+          </div>
+
+          <div class="mt-3 mb-3">
+            <label for="Content" class="form-label">Response Content</label>
+            <input type="text" class="form-control" value="{{ response.content }}" name="content">
+          </div>
+
+          <div class="mt-3 mb-3">
+            <label for="Category" class="form-label">Category</label>
+            <input type="text" class="form-control" value="{{ response.category }}" name="category">
+          </div>
+
+          <div class="mt-3 mb-3">
+            <label for="Tags" class="form-label">Tags</label>
+            <input type="text" class="form-control" value="{{ response.tags }}" name="tags">
+          </div>
+
+          
+          <button type="submit" class="btn btn-secondary">Update</button>
+      </form>
+  </div class>
+
+    {% endif %}
+  </div>
+</div>
+{% endblock content %}

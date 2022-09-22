@@ -9,6 +9,8 @@ from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 from django.conf import settings
 import uuid
+#from django.urls import path
+#from . import views
 
 def home(request):
     contents = None
@@ -41,7 +43,10 @@ def logout_user(request):
     return redirect('home')
 
 def about(request):
-    return render(request, 'about')
+    return render(request, 'authenticate/about.html', {})
+
+def response(request):
+    return render(request, 'authenticate/response.html', {})
 
 
 def register_user(request):
@@ -137,3 +142,5 @@ def forgot_verification(request, uid):
         })
     else:
         return render(request, 'authenticate/forgot/error.html')
+
+

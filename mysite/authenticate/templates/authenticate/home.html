@@ -34,6 +34,16 @@
                         <p id="p3" class="draggable" draggable="false" ondragstart="drag(event)">
                             COMING SOON
                         </p>
+                        <p id="p2" class="draggable" draggable="false" ondragstart="drag(event)">
+                            COMING SOON
+                        </p>
+                        <p id="p3" class="draggable" draggable="false" ondragstart="drag(event)">
+                            COMING SOON
+                        </p>
+                        <p id="p3" class="draggable" draggable="false" ondragstart="drag(event)">
+                            COMING SOON
+                        </p>
+                       
                     </div>
                 </div>
             </div>
@@ -61,11 +71,18 @@
                             {{ user.suburb}}, {{ user.state}}, {{ user.country}}</br>
                             Phone: {{ user.phone}}</br>
                             eMail: {{ user.email}}</p>
-                            </p>
+
+                            <p> <span id="businessname"></span><br>
+                             <span id="businessaddress1"></span><br>
+                             <span id="businessaddress2"></span><br>
+                             <span id="businesssuburb" id="businessstate"></span></p>
+                      
+
+                
                             <p>Reference : <span id="reference"></span></p>
                             <p>Application for  (<span id="recriterrole"></span>)</p>
 
-                            Dear Recriter <span id="recritername"></span><br />
+                            Dear <span id="recritername"></span><br />
                             
                             {% endif %}
                         </div>
@@ -86,7 +103,15 @@
         if($('#RecName').val() !== '' && $('#RecRole').val() !== '' ){
             $('#recritername').html($('#RecName').val())
               $('#recriterrole').html($('#RecRole').val())
-                $('#reference').html($('#RefIn').val())
+                $('#businessname').html($('#BusName').val())
+                    $('#businessaddress1').html($('#BusAddress1').val())
+                        $('#businessaddress2').html($('#BusAddress2').val())
+                        $('#businesssuburb').html($('#BusCity').val())
+                            $('#businessstate').html($('#BusState').val())
+                            
+                  $('#reference').html($('#RefIn').val())
+                    $('#recriterrole').html($('#RecRole').val())
+        }else{
         }
 
         return false
@@ -106,6 +131,21 @@
 
                             <label> Recruiter Name</label></br>
                             <input type="text" id="RecName" name="recruiter_name"></br>
+
+                            <label> Business Name</label></br>
+                            <input type="text" id="BusName" name="business_name"></br>
+
+                            <label> Address Line 1</label></br>
+                            <input type="text" id="BusAddress1" name="business_address1"></br>
+
+                            <label> Business Line 2</label></br>
+                            <input type="text" id="BusAddress2" name="business_address2"></br>
+
+                            <label> City</label></br>
+                            <input type="text" id="BusCity" name="business_city"></br>
+
+                            <label> State</label></br>
+                            <input type="text" id="BusState" name="business_state"></br>
 
                             <label> Reference</label></br>
                             <input type="text" id="RefIn" name="reference"></br>
