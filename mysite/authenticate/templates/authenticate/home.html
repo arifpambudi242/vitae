@@ -186,9 +186,10 @@
                         ondrop="drop(event)" ondragover="allowDrop(event)">
 
                         {% for item in contents %}
-                        <p id="p5" class="draggable" draggable="true" ondragstart="drag(event)" onclick="editResponse('{{ item.id }}')">
+                        <p id="p5" class="draggable" draggable="true" ondragstart="drag(event)">
                             <!--<strong>{{ item.title }}</strong><br>-->
-                            {{ item.content }}
+                            <span>{{ item.content }}</span>
+                            <i class="fa-solid fa-pencil" onclick="editResponse('{{ item.id }}')"></i>
                         </p>
                         {% endfor %}
                     </div>

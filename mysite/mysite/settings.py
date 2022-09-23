@@ -21,6 +21,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'jazzmin',
     'django.contrib.admin',
+    'fontawesomefree',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',

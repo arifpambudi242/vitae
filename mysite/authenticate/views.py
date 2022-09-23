@@ -65,10 +65,11 @@ def response(request):
                 response.tags = request.POST['tags']
             response.save()
             messages.success(request, extra_tags='alert alert-success', message='Your response has been saved')
-            return redirect('response')
+            # redirect to response page with param id
+            return redirect(f'{request.path}?id={response.id}')
         else:
             messages.error(request, extra_tags='alert alert-danger', message='Content field is empty')
-            return redirect('response')
+            return redirect(f'{request.path}?id={request.POST["id"]}')
     response = {
         'response': 
         {

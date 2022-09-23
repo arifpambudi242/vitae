@@ -60,12 +60,4 @@
     {% endif %}
   </div>
 </div>
-<script>
-  // if class alert-success is present, then redirect to home
-  if (document.getElementsByClassName("alert-success").length > 0) {
-    setTimeout(function() {
-      window.location.href = "{% url 'home' %}";
-    }, 2000);
-  }
-</script>
 {% endblock content %}
