@@ -186,7 +186,7 @@
                         ondrop="drop(event)" ondragover="allowDrop(event)">
 
                         {% for item in contents %}
-                        <p id="p5" class="draggable" draggable="true" ondragstart="drag(event)">
+                        <p id="p5" class="draggable" draggable="true" ondragstart="drag(event)" onclick="editResponse('{{ item.id }}')">
                             <!--<strong>{{ item.title }}</strong><br>-->
                             {{ item.content }}
                         </p>
@@ -230,6 +230,10 @@
         event.preventDefault();
         const data = event.dataTransfer.getData("text");
         event.target.appendChild(document.getElementById(data));
+    }
+    // if #p5 clicked, get data-id and send to server
+    const editResponse = (id) => {
+        window.location.href = `{% url 'response' %}?id=${id}`;
     }
 </script>
 {% endblock js %}

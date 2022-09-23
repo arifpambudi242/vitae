@@ -50,12 +50,19 @@ def about(request):
 def response(request):
     if request.method == 'POST':
         if request.POST['content'] != '':
-            response = Response(\
-                content=request.POST['content'],\
-                user=request.user,\
-                title=request.POST['title'],\
-                category=request.POST['category'],\
-                tags=request.POST['tags'])
+            if not 'id' in request.POST:
+                response = Response(\
+                    content=request.POST['content'],\
+                    user=request.user,\
+                    title=request.POST['title'],\
+                    category=request.POST['category'],\
+                    tags=request.POST['tags'])
+            else:
+                response = Response.objects.get(id=request.POST['id'])
+                response.content = request.POST['content']
+                response.title = request.POST['title']
+                response.category = request.POST['category']
+                response.tags = request.POST['tags']
             response.save()
             messages.success(request, extra_tags='alert alert-success', message='Your response has been saved')
             return redirect('response')
@@ -69,6 +76,15 @@ def response(request):
             'categories': categories,
         }
     }
+    # check if request.GET['id'] exists
+    if 'id' in request.GET:
+        responses = Response.objects.filter(id=request.GET['id'])
+        if responses.exists():
+            response['response']['content'] = responses[0].content
+            response['response']['title'] = responses[0].title
+            response['response']['category'] = responses[0].category
+            response['response']['tags'] = responses[0].tags
+            response['response']['id'] = responses[0].id
     return render(request, 'authenticate/response.html', context=response)
 
 

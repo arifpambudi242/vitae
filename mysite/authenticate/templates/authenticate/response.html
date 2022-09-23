@@ -8,60 +8,62 @@
 
   </div>-->
   <div class="content">
-    <h1 class ="text-center"> Add Response</h1>
+    <h1 class="text-center"> Add Response</h1>
     {% if user.is_authenticated %}
-    <div class = "col-md-6 offset-md-3">
-      <form method ="POST">
-          {% csrf_token %}
-          
-          <div class="mt-3 mb-3">
-            <label for="User" class="form-label">User</label>
-            <input type="text" class="form-control" value="{{ response.user.last_name }}" name="user" readonly>
-          </div>
+    <div class="col-md-6 offset-md-3">
+      <form method="POST">
+        {% csrf_token %}
+        {% if response.id %}
+        <input type="hidden" name="id" value="{{response.id}}">
+        {% endif %}
+        <div class="mt-3 mb-3">
+          <label for="User" class="form-label">User</label>
+          <input type="text" class="form-control" value="{{ response.user.last_name }}" name="user" readonly>
+        </div>
 
-          
-          <div class="mt-3 mb-3">
-            <label for="Title" class="form-label">Response Title</label>
-            <input type="text" class="form-control" value="{{ response.title }}" name="title">
-          </div>
 
-          <div class="mt-3 mb-3">
-            <label for="Content" class="form-label">Response Content</label>
-            <input type="text" class="form-control" value="{{ response.content }}" name="content">
-          </div>
+        <div class="mt-3 mb-3">
+          <label for="Title" class="form-label">Response Title</label>
+          <input type="text" class="form-control" value="{{ response.title }}" name="title">
+        </div>
 
-          <div class="mt-3 mb-3">
-            <!-- dropdown of categories -->
-            <label for="Category" class="form-label">Category</label>
-            <select class="form-control" name="category" id="Category">
-              {% if response.categories %}
-              {% for category in response.categories %}
-              <option class="form-control" value="{{ category.0 }}">{{ category.1 }}</option>
-              {% endfor %}
-              {% else %}
-              <option class="form-control" value="">There is no category</option>
-              {% endif %}
-            </select>
-            <!-- <input type="text" class="form-control" value="{{ response.categories }}" name="category"> -->
-          </div>
+        <div class="mt-3 mb-3">
+          <label for="Content" class="form-label">Response Content</label>
+          <input type="text" class="form-control" value="{{ response.content }}" name="content">
+        </div>
 
-          <div class="mt-3 mb-3">
-            <label for="Tags" class="form-label">Tags</label>
-            <input type="text" class="form-control" value="{{ response.tags }}" name="tags">
-          </div>
+        <div class="mt-3 mb-3">
+          <!-- dropdown of categories -->
+          <label for="Category" class="form-label">Category</label>
+          <select class="form-control" name="category" id="Category">
+            {% if response.categories %}
+            {% for category in response.categories %}
+            <option class="form-control" value="{{ category.0 }}" {% if response.category == category.0 %}selected{% endif %}>{{ category.1 }}</option>
+            {% endfor %}
+            {% else %}
+            <option class="form-control" value="">There is no category</option>
+            {% endif %}
+          </select>
+          <!-- <input type="text" class="form-control" value="{{ response.categories }}" name="category"> -->
+        </div>
 
-          
-          <button type="submit" class="btn btn-secondary">Update</button>
+        <div class="mt-3 mb-3">
+          <label for="Tags" class="form-label">Tags</label>
+          <input type="text" class="form-control" value="{{ response.tags }}" name="tags">
+        </div>
+
+
+        <button type="submit" class="btn btn-secondary">Update</button>
       </form>
-  </div class>
+    </div class>
 
     {% endif %}
   </div>
 </div>
 <script>
-  // if div#message exist redirect to home
-  if (document.getElementById("message")) {
-    setTimeout(function () {
+  // if class alert-success is present, then redirect to home
+  if (document.getElementsByClassName("alert-success").length > 0) {
+    setTimeout(function() {
       window.location.href = "{% url 'home' %}";
     }, 2000);
   }
