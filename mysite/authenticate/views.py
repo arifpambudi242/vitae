@@ -67,7 +67,7 @@ def response(request):
     response = {
         'response': 
         {
-            'user' : request.session['user'],
+            'user' : request.user,
             'categories': categories,
         }
     }
