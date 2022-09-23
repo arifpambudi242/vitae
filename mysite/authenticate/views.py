@@ -30,12 +30,10 @@ def login_user(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            # save user to session
-            request.session['user'] = username
-            messages.success(request, 'You are now logged in')
+            messages.success(request, extra_tags='alert alert-success', message='You are now logged in')
             return redirect('home')
         else:
-            messages.error(request, 'Invalid credentials')
+            messages.error(request, extra_tags='alert alert-danger', message='Invalid credentials')
             return redirect('login')
     else:
         return render(request, 'authenticate/login.html',{})
@@ -43,7 +41,7 @@ def login_user(request):
 
 def logout_user(request):
     logout(request)
-    messages.success(request, 'You are now logged out')
+    messages.success(request, extra_tags='alert alert-success', message='You are now logged out')
     return redirect('home')
 
 def about(request):
@@ -62,7 +60,7 @@ def response(request):
             messages.success(request, extra_tags='alert alert-success', message='Your response has been saved')
             return redirect('response')
         else:
-            messages.error(request, 'Content field is empty')
+            messages.error(request, extra_tags='alert alert-danger', message='Content field is empty')
             return redirect('response')
     response = {
         'response': 
@@ -84,7 +82,7 @@ def register_user(request):
             password = form.cleaned_data['password1']
             user = authenticate(request, username=username, password=password)
 
-            messages.success(request, 'You are now registered and logged in')
+            messages.success(request, extra_tags='alert alert-success', message='You are now registered and logged in')
             # Once registered, the user is logged in automatically.
             login(request, user)
             return redirect('profile')
