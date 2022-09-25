@@ -60,4 +60,12 @@
     {% endif %}
   </div>
 </div>
+<script>
+  // if input name id and .alert-success exist redirect to home
+  if (document.getElementsByName("id") && document.getElementById("message").classList.contains("alert-success")) {
+    setTimeout(function() {
+      window.location.href = "{% url 'home' %}";
+    }, 2000);
+  }
+</script>
 {% endblock content %}

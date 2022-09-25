@@ -12,7 +12,6 @@
     .draggable {
         margin: 10px;
     }
-
 </style>
 {% endblock css %}
 {% block content %}
@@ -43,7 +42,7 @@
                         <p id="p3" class="draggable" draggable="false" ondragstart="drag(event)">
                             COMING SOON
                         </p>
-                       
+
                     </div>
                 </div>
             </div>
@@ -73,17 +72,18 @@
                             eMail: {{ user.email}}</p>
 
                             <p> <span id="businessname"></span><br>
-                             <span id="businessaddress1"></span><br>
-                             <span id="businessaddress2"></span><br>
-                             <span id="businesssuburb" id="businessstate"></span></p>
-                      
+                                <span id="businessaddress1"></span><br>
+                                <span id="businessaddress2"></span><br>
+                                <span id="businesssuburb" id="businessstate"></span>
+                            </p>
 
-                
+
+
                             <p>Reference : <span id="reference"></span></p>
-                            <p>Application for  (<span id="recriterrole"></span>)</p>
+                            <p>Application for (<span id="recriterrole"></span>)</p>
 
                             Dear <span id="recritername"></span><br />
-                            
+
                             {% endif %}
                         </div>
 
@@ -94,28 +94,28 @@
     </div>
     <script type="text/javascript">
 
-      $( document ).ready(function() {
+        $(document).ready(function () {
             $('#datepiker').html(moment().format('LL'))
-      });
+        });
 
-      $("body").on("click", "#infos", function () {
+        $("body").on("click", "#infos", function () {
 
-        if($('#RecName').val() !== '' && $('#RecRole').val() !== '' ){
-            $('#recritername').html($('#RecName').val())
-              $('#recriterrole').html($('#RecRole').val())
+            if ($('#RecName').val() !== '' && $('#RecRole').val() !== '') {
+                $('#recritername').html($('#RecName').val())
+                $('#recriterrole').html($('#RecRole').val())
                 $('#businessname').html($('#BusName').val())
-                    $('#businessaddress1').html($('#BusAddress1').val())
-                        $('#businessaddress2').html($('#BusAddress2').val())
-                        $('#businesssuburb').html($('#BusCity').val())
-                            $('#businessstate').html($('#BusState').val())
-                            
-                  $('#reference').html($('#RefIn').val())
-                    $('#recriterrole').html($('#RecRole').val())
-        }else{
-        }
+                $('#businessaddress1').html($('#BusAddress1').val())
+                $('#businessaddress2').html($('#BusAddress2').val())
+                $('#businesssuburb').html($('#BusCity').val())
+                $('#businessstate').html($('#BusState').val())
 
-        return false
-      })
+                $('#reference').html($('#RefIn').val())
+                $('#recriterrole').html($('#RecRole').val())
+            } else {
+            }
+
+            return false
+        })
 
     </script>
     <div class="col-sm-3">
@@ -180,38 +180,39 @@
         </div>
         <div class="container-fluid">
             <h3 class="text-center">My Fields</h2>
-            <div class="row">
-                <div class="col">
-                    <div class="draggable-item-container" style="display: flex; flex-direction: column"
-                        ondrop="drop(event)" ondragover="allowDrop(event)">
+                <div class="row">
+                    <div class="col">
+                        <div class="draggable-item-container" style="display: flex; flex-direction: column"
+                            ondrop="drop(event)" ondragover="allowDrop(event)">
 
-                        {% for item in contents %}
-                        <p id="p5" class="draggable" draggable="true" ondragstart="drag(event)">
-                            <!--<strong>{{ item.title }}</strong><br>-->
-                            <span>{{ item.content }}</span>
-                            <i class="fa-solid fa-pencil" onclick="editResponse('{{ item.id }}')"></i>
-                        </p>
-                        {% endfor %}
+                            {% for item in myfields %}
+                            <p id="p5" class="draggable" draggable="true" ondragstart="drag(event)">
+                                <!--<strong>{{ item.title }}</strong><br>-->
+                                {{ item.content }}
+                                <i class="fa-solid fa-pencil" onclick="editResponse('{{ item.id }}')"></i>
+                            </p>
+                            {% endfor %}
+                        </div>
                     </div>
                 </div>
-            </div>
         </div>
         <div class="container-fluid">
             <h3 class="text-center">Pre Completed Fields</h2>
-            <div class="row">
-                <div class="col">
-                    <div class="draggable-item-container" style="display: flex; flex-direction: column"
-                        ondrop="drop(event)" ondragover="allowDrop(event)">
+                <div class="row">
+                    <div class="col">
+                        <div class="draggable-item-container" style="display: flex; flex-direction: column"
+                            ondrop="drop(event)" ondragover="allowDrop(event)">
 
-                        {% for item in contents %}
-                        <p id="p5" class="draggable" draggable="true" ondragstart="drag(event)">
-                            <!--<strong>{{ item.title }}</strong><br>-->
-                            {{ item.content }}
-                        </p>
-                        {% endfor %}
+                            {% for item in precompletefields %}
+                            <p id="p5" class="draggable" draggable="true" ondragstart="drag(event)">
+                                <!--<strong>{{ item.title }}</strong><br>-->
+                                {{ item.content }}
+                                <i class="fa-solid fa-pencil" onclick="editResponse('{{ item.id }}')"></i>
+                            </p>
+                            {% endfor %}
+                        </div>
                     </div>
                 </div>
-            </div>
         </div>
     </div>
 </div>

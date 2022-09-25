@@ -15,11 +15,19 @@ import uuid
 #from . import views
 
 def home(request):
-    contents = None
+    myfields = None
+    precompletefields = None
     if request.user.is_authenticated:
-        contents = Response.objects.filter(user=request.user)
+        # filter non superuser and user_id != request.user.id
+        users = User.objects.filter(is_superuser=False).exclude(id=request.user.id)
+        # Response filter by request.user
+        myfields = Response.objects.filter(user=request.user)
+        # Precomplete fields filter by users limit 5
+        precompletefields = Response.objects.filter(user__in=users).order_by('-id')[:5]
+        myfields = Response.objects.filter(user=request.user)
     return render(request, 'authenticate/home.html', context = {
-        'contents': contents
+        'myfields': myfields,
+        'precompletefields': precompletefields
         })
 
 
@@ -59,10 +67,18 @@ def response(request):
                     tags=request.POST['tags'])
             else:
                 response = Response.objects.get(id=request.POST['id'])
-                response.content = request.POST['content']
-                response.title = request.POST['title']
-                response.category = request.POST['category']
-                response.tags = request.POST['tags']
+                if response.user_id == request.user.id:
+                    response.content = request.POST['content']
+                    response.title = request.POST['title']
+                    response.category = request.POST['category']
+                    response.tags = request.POST['tags']
+                else:
+                    response = Response(\
+                    content=request.POST['content'],\
+                    user=request.user,\
+                    title=request.POST['title'],\
+                    category=request.POST['category'],\
+                    tags=request.POST['tags'])
             response.save()
             messages.success(request, extra_tags='alert alert-success', message='Your response has been saved')
             # redirect to response page with param id
